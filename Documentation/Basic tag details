@@ -1,0 +1,24 @@
+<!-- Tells browser that this is HTML file -->
+<!--  -->
+<!DOCTYPE html> 
+<html>  <!-- Root tag  -->
+    <head>  <!-- Header Tag -->
+        <title>My First Web Page</title> // title show in browser tab
+    </head>
+
+    <body>  // Contains visible webpage content
+        <h1>Welcome to my Website</h1>
+        <p>This is my first HTML page.</p>
+        <a href="/Frontend File/Home.html">My home page</a> // href = hyperlink referance -> attributes 
+    </body>
+</html>
+
+html 
+  |-> head 
+  |    |-> title
+  |
+  |->body
+    |-> Heding
+    |-> Paragraph 
+    |-> Image
+    |-> other content
