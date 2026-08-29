@@ -1,24 +1,391 @@
-<!-- Tells browser that this is HTML file -->
-<!--  -->
-<!DOCTYPE html> 
-<html>  <!-- Root tag  -->
-    <head>  <!-- Header Tag -->
-        <title>My First Web Page</title> // title show in browser tab
+HTML5 — Basic HTML Tags & Attributes
+
+1. What is HTML?
+
+HTML stands for HyperText Markup Language.
+
+HTML is used to create and structure web pages.
+
+HTML is not a programming language. It is a markup language.
+
+Example:
+
+<h1>Welcome to My Website</h1>
+<p>This is my first web page.</p>
+-----------------------------------------------------------------------------------------
+2. Basic HTML Structure
+
+Every HTML page generally follows this structure:
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>My First Web Page</title>
     </head>
 
-    <body>  // Contains visible webpage content
+    <body>
         <h1>Welcome to my Website</h1>
         <p>This is my first HTML page.</p>
-        <a href="/Frontend File/Home.html">My home page</a> // href = hyperlink referance -> attributes 
     </body>
 </html>
+Structure Explanation
+<!DOCTYPE html>
+        ↓
+    HTML5 Document
+        ↓
+     <html>
+       /   \
+   <head> <body>
+     ↓       ↓
+  Page Info  Visible Content
+-----------------------------------------------------------------------------------------
 
-html 
-  |-> head 
-  |    |-> title
-  |
-  |->body
-    |-> Heding
-    |-> Paragraph 
-    |-> Image
-    |-> other content
+3. <!DOCTYPE html>
+Definition
+
+<!DOCTYPE html> tells the browser that the document is written using HTML5.
+
+Syntax
+<!DOCTYPE html>
+Important Point
+It is a declaration, not a normal HTML tag.
+It should be the first line of an HTML document.
+-----------------------------------------------------------------------------------------
+
+4. <html> Tag
+Definition
+
+The <html> element is the root element of an HTML document.
+
+All HTML content is written inside <html>.
+
+Syntax
+<html>
+    ...
+</html>
+Example
+<html>
+    <head>
+    </head>
+
+    <body>
+    </body>
+</html>
+-----------------------------------------------------------------------------------------
+
+5. <head> Tag
+Definition
+
+The <head> contains information about the webpage.
+
+The content inside <head> is generally not displayed directly on the webpage.
+
+It can contain:
+
+<title>
+CSS
+JavaScript
+Meta information
+Favicon
+Example
+<head>
+    <title>Student Management System</title>
+</head>
+-----------------------------------------------------------------------------------------
+
+6. <title> Tag
+Definition
+
+The <title> tag defines the title of the webpage.
+
+The title is normally displayed in the browser tab.
+
+Example
+<title>My First Web Page</title>
+
+Browser tab:
+
+My First Web Page
+Important
+
+<title> and <h1> are different.
+
+<title>My Website</title>
+
+→ Browser tab
+
+<h1>Welcome to My Website</h1>
+
+→ Visible webpage heading
+-----------------------------------------------------------------------------------------
+
+7. <body> Tag
+Definition
+
+The <body> contains the visible content of a webpage.
+
+It can contain:
+
+Headings
+Paragraphs
+Images
+Links
+Lists
+Tables
+Forms
+Buttons
+Example
+<body>
+    <h1>Welcome</h1>
+    <p>Welcome to my website.</p>
+</body>
+-----------------------------------------------------------------------------------------
+
+8. Heading Tags
+
+HTML provides six heading tags:
+
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+Heading Hierarchy
+<h1> → Most important heading
+<h2> → Subheading
+<h3> → Sub-subheading
+<h4>
+<h5>
+<h6> → Lowest heading level
+Example
+<h1>Student Management System</h1>
+
+<h2>Student Information</h2>
+
+<h3>Personal Details</h3>
+-----------------------------------------------------------------------------------------
+
+9. <p> Tag
+Definition
+
+<p> stands for Paragraph.
+
+It is used to display a paragraph of text.
+
+Syntax
+<p>Text goes here</p>
+Example
+<p>HTML is used to create web pages.</p>
+
+<p>I am learning frontend development.</p>
+-----------------------------------------------------------------------------------------
+
+10. <a> Tag
+Definition
+
+<a> stands for Anchor.
+
+It is used to create a hyperlink.
+
+Syntax
+<a href="URL">Link Text</a>
+Example
+<a href="https://www.google.com/">Google</a>
+
+The user sees:
+
+Google
+
+When the user clicks it, Google opens.
+-----------------------------------------------------------------------------------------
+
+11. href Attribute
+
+href stands for Hypertext Reference.
+
+It specifies the destination of a link.
+
+Example
+<a href="https://www.google.com/">Google</a>
+
+Here:
+
+<a>                         → Tag
+href                        → Attribute
+"https://www.google.com/"   → Attribute value
+Google                      → Link text
+Another Example
+<a href="Home.html">Home</a>
+
+This can be used to navigate to another HTML page in your project.
+-----------------------------------------------------------------------------------------
+
+12. Internal Link
+
+An internal link points to another page/file within your website.
+
+Example project:
+
+Website
+│
+├── index.html
+├── Home.html
+├── About.html
+└── Contact.html
+
+HTML:
+
+<a href="Home.html">Home</a>
+<a href="About.html">About</a>
+<a href="Contact.html">Contact</a>
+-----------------------------------------------------------------------------------------
+
+13. External Link
+
+An external link points to another website.
+
+Example:
+
+<a href="https://www.google.com/">Google</a>
+
+<a href="https://www.youtube.com/">YouTube</a>
+-----------------------------------------------------------------------------------------
+
+14. <img> Tag
+Definition
+
+The <img> tag is used to display an image on a webpage.
+
+Syntax
+<img src="image-path" alt="image description">
+Example
+<img src="Images/shirt.png" alt="Blue shirt">
+15. src Attribute
+
+src stands for Source.
+
+It specifies the location/path of the image.
+
+Example:
+
+<img src="Images/shirt.png">
+
+Here:
+
+src → Attribute
+Images/shirt.png → Image path
+Example Project
+Website
+│
+├── index.html
+│
+└── Images
+    └── shirt.png
+
+HTML:
+
+<img src="Images/shirt.png">
+-----------------------------------------------------------------------------------------
+
+16. alt Attribute
+
+alt stands for Alternative Text.
+
+It provides a description of an image.
+
+Example:
+
+<img src="Images/shirt.png" alt="Blue shirt">
+Why use alt?
+Helps when an image cannot load.
+Improves accessibility.
+Screen readers can read the description.
+Provides useful information about the image.
+-----------------------------------------------------------------------------------------
+
+17. HTML Comments
+
+Comments are written using:
+
+<!-- This is a comment -->
+
+The browser does not display comments on the webpage.
+
+Example
+<!-- This is the main heading -->
+
+<h1>Welcome to My Website</h1>
+Multiple-line comment
+<!--
+    This is a
+    multi-line comment
+-->
+Uses of Comments
+Explain code
+Add notes
+Temporarily disable code
+Help other developers understand the code
+-----------------------------------------------------------------------------------------
+
+18. HTML Tags vs Attributes
+
+This is an important concept.
+
+Tag
+<a>
+
+a is the tag name.
+
+Attribute
+href="https://www.google.com/"
+
+href is an attribute.
+
+Complete Example
+<a href="https://www.google.com/">Google</a>
+
+Breakdown:
+
+<a>                         → Tag
+href                        → Attribute
+"https://www.google.com/"   → Attribute Value
+Google                      → Content
+</a>                        → Closing Tag
+-----------------------------------------------------------------------------------------
+
+19. Opening and Closing Tags
+
+Most HTML elements have an opening and closing tag.
+
+Example:
+
+<p>Hello World</p>
+<p>           → Opening tag
+Hello World   → Content
+</p>          → Closing tag
+
+Another example:
+
+<h1>Welcome</h1>
+-----------------------------------------------------------------------------------------
+
+20. Empty/Void Elements
+
+Some HTML elements don't require a closing tag.
+
+Example:
+
+<img src="shirt.png" alt="Shirt">
+
+<img> is a void element.
+
+Other common void elements include:
+
+<br>
+<hr>
+<img>
+<input>
+<meta>
+<link>
