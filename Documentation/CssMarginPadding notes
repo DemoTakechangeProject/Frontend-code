@@ -1,0 +1,303 @@
+1. <div> Tag
+
+The <div> tag is a container used to group HTML elements together.
+
+It is commonly used to create different sections of a webpage and apply CSS styles.
+
+Syntax
+<div>
+    <h1>Welcome</h1>
+    <p>This is a paragraph.</p>
+</div>
+Example
+<div>
+    <h2>Student Information</h2>
+    <p>Name: Rahul</p>
+    <p>Course: Java Full Stack</p>
+</div>
+
+Important: <div> is a block-level element, so it normally starts on a new line and takes the available width.
+
+2. Inline CSS
+
+Inline CSS is written directly inside the HTML element using the style attribute.
+
+Syntax
+<tag style="property: value;">
+Example
+<h1 style="color: blue;">Welcome</h1>
+
+<p style="font-size: 20px;">
+    This is a paragraph.
+</p>
+Multiple CSS Properties
+<div style="color: white; background-color: blue; padding: 20px;">
+    Student Information
+</div>
+
+Here:
+
+color → Text color
+background-color → Background color
+padding → Space inside the element
+Advantages
+Easy for small changes
+Useful for testing styles quickly
+Disadvantages
+Difficult to maintain
+Repeated styles make HTML lengthy
+3. Internal CSS
+
+Internal CSS is written inside the <style> tag in the <head> section of an HTML document.
+
+Example
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internal CSS</title>
+
+    <style>
+        h1 {
+            color: blue;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome</h1>
+    <p>This is a paragraph.</p>
+
+</body>
+</html>
+Syntax
+selector {
+    property: value;
+}
+
+Example:
+
+h1 {
+    color: red;
+    font-size: 30px;
+}
+
+Use: Internal CSS is useful when styling a single HTML page.
+
+4. External CSS
+
+External CSS is written in a separate .css file.
+
+For example:
+
+project/
+│
+├── index.html
+└── style.css
+style.css
+h1 {
+    color: blue;
+    font-size: 30px;
+}
+
+p {
+    color: green;
+}
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>External CSS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Welcome</h1>
+    <p>This is my website.</p>
+
+</body>
+</html>
+Advantages
+Easy to maintain
+Same CSS can be used on multiple HTML pages
+Keeps HTML and CSS separate
+Recommended for real projects
+5. CSS Properties
+
+CSS properties are used to change the appearance and layout of HTML elements.
+
+color
+
+Changes the text color.
+
+p {
+    color: red;
+}
+
+You can also use:
+
+p {
+    color: #ff0000;
+}
+background-color
+
+Changes the background color.
+
+div {
+    background-color: lightblue;
+}
+font-size
+
+Changes the size of the text.
+
+p {
+    font-size: 20px;
+}
+
+Common units:
+
+font-size: 16px;
+font-size: 1rem;
+font-size: 1.5em;
+6. Margin
+
+Margin creates space outside an element.
+
+div {
+    margin: 20px;
+}
+Individual sides
+div {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+Short form
+div {
+    margin: 10px 20px;
+}
+
+Meaning:
+
+10px  → Top & Bottom
+20px  → Left & Right
+7. Padding
+
+Padding creates space inside an element, between the content and border.
+
+div {
+    padding: 20px;
+}
+Example
+<div class="box">
+    Hello Student
+</div>
+.box {
+    background-color: lightblue;
+    padding: 20px;
+}
+Margin vs Padding
+        Margin
+          ↓
+    ┌───────────────┐
+    │    Padding    │
+    │   ┌───────┐   │
+    │   │Content│   │
+    │   └───────┘   │
+    └───────────────┘
+
+Remember:
+
+Margin → Space outside
+Padding → Space inside
+8. Other Common CSS Properties
+Property	Purpose	Example
+color	Text color	color: red;
+background-color	Background color	background-color: blue;
+font-size	Text size	font-size: 20px;
+font-family	Font style	font-family: Arial;
+font-weight	Text thickness	font-weight: bold;
+text-align	Text alignment	text-align: center;
+margin	Outside spacing	margin: 20px;
+padding	Inside spacing	padding: 20px;
+width	Element width	width: 300px;
+height	Element height	height: 200px;
+border	Adds border	border: 1px solid black;
+border-radius	Rounded corners	border-radius: 10px;
+9. Complete Example
+HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Card</title>
+
+    <style>
+        .student-card {
+            background-color: lightblue;
+            color: black;
+            width: 300px;
+            padding: 20px;
+            margin: 30px;
+            border: 2px solid blue;
+            border-radius: 10px;
+        }
+
+        .student-name {
+            color: blue;
+            font-size: 25px;
+        }
+
+        .course {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="student-card">
+        <h2 class="student-name">Rahul</h2>
+        <p class="course">Java Full Stack Developer</p>
+    </div>
+
+</body>
+</html>
+Output Structure
+        Margin
+          ↓
+    ┌─────────────────────┐
+    │      Student Card   │
+    │                     │
+    │   Rahul             │
+    │   Java Full Stack   │
+    │                     │
+    └─────────────────────┘
+          ↑
+       Padding
+Quick Revision
+HTML
+ └── <div> → Container / Section
+
+CSS
+ ├── Inline   → style="" inside HTML element
+ ├── Internal → <style> inside <head>
+ └── External → Separate .css file
+
+Common Properties
+ ├── color
+ ├── background-color
+ ├── font-size
+ ├── font-family
+ ├── margin
+ ├── padding
+ ├── width
+ ├── height
+ ├── border
+ └── border-radius
