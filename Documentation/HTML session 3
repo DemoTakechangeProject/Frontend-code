@@ -1,0 +1,298 @@
+1. Lists in HTML
+
+Lists are used to display a group of related items.
+
+HTML provides three types of lists:
+
+A. Ordered List <ol>
+
+An ordered list displays items with numbers.
+
+<h2>Programming Languages</h2>
+
+<ol>
+    <li>Java</li>
+    <li>Python</li>
+    <li>JavaScript</li>
+    <li>C++</li>
+</ol>
+
+Output:
+
+Java
+Python
+JavaScript
+C++
+<ol> → Ordered List
+<li> → List Item
+B. Unordered List <ul>
+
+An unordered list displays items using bullets.
+
+<h2>Frontend Technologies</h2>
+
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>React JS</li>
+</ul>
+
+Output:
+
+HTML
+CSS
+JavaScript
+React JS
+<ul> → Unordered List
+<li> → List Item
+C. Description List <dl>
+
+A description list is used for terms and their descriptions.
+
+<dl>
+    <dt>HTML</dt>
+    <dd>Used to create the structure of a webpage.</dd>
+
+    <dt>CSS</dt>
+    <dd>Used to design and style a webpage.</dd>
+</dl>
+<dl> → Description List
+<dt> → Description Term
+<dd> → Description Details
+2. Tables in HTML
+
+Tables are used to display data in rows and columns.
+
+Basic Table
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Course</th>
+    </tr>
+
+    <tr>
+        <td>101</td>
+        <td>Rahul</td>
+        <td>Java</td>
+    </tr>
+
+    <tr>
+        <td>102</td>
+        <td>Priya</td>
+        <td>Python</td>
+    </tr>
+
+</table>
+Important Tags
+Tag	Meaning
+<table>	Creates table
+<tr>	Table Row
+<th>	Table Heading
+<td>	Table Data
+Table with Caption
+<table border="1">
+
+    <caption>Student Details</caption>
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Marks</th>
+    </tr>
+
+    <tr>
+        <td>1</td>
+        <td>Amit</td>
+        <td>85</td>
+    </tr>
+
+</table>
+
+<caption> gives a title to the table.
+
+3. Forms in HTML
+
+Forms are used to collect information from users.
+
+For example:
+
+Student registration
+Login
+Contact form
+Feedback form
+Job application
+Basic Form
+<form>
+
+    <label>Name:</label>
+    <input type="text">
+
+    <br><br>
+
+    <label>Email:</label>
+    <input type="email">
+
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password">
+
+    <br><br>
+
+    <button type="submit">Register</button>
+
+</form>
+Important Form Tags
+Tag	Purpose
+<form>	Creates a form
+<label>	Label for input
+<input>	Takes user input
+<textarea>	Multi-line input
+<select>	Creates dropdown
+<option>	Dropdown option
+<button>	Creates button
+Example: Student Registration Form
+<form>
+
+    <h2>Student Registration</h2>
+
+    <label>Full Name:</label>
+    <input type="text" name="name">
+
+    <br><br>
+
+    <label>Email:</label>
+    <input type="email" name="email">
+
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password">
+
+    <br><br>
+
+    <label>Gender:</label>
+
+    <input type="radio" name="gender" value="male">
+    <label>Male</label>
+
+    <input type="radio" name="gender" value="female">
+    <label>Female</label>
+
+    <br><br>
+
+    <label>Course:</label>
+
+    <select name="course">
+        <option>Java</option>
+        <option>Python</option>
+        <option>React JS</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Register</button>
+
+</form>
+4. Input Types in HTML
+
+The <input> element supports different type values.
+
+Common Input Types
+Input Type	Purpose
+text	Single-line text
+password	Password
+email	Email address
+number	Numbers
+date	Date
+time	Time
+radio	Select one option
+checkbox	Select multiple options
+file	Upload file
+color	Select color
+range	Select range
+tel	Telephone number
+url	Website URL
+search	Search field
+submit	Submit form
+reset	Reset form
+button	Normal button
+Example
+<form>
+
+    Name:
+    <input type="text">
+
+    <br><br>
+
+    Email:
+    <input type="email">
+
+    <br><br>
+
+    Password:
+    <input type="password">
+
+    <br><br>
+
+    Age:
+    <input type="number">
+
+    <br><br>
+
+    Birth Date:
+    <input type="date">
+
+    <br><br>
+
+    Time:
+    <input type="time">
+
+    <br><br>
+
+    Upload Resume:
+    <input type="file">
+
+    <br><br>
+
+    Select Color:
+    <input type="color">
+
+    <br><br>
+
+    <input type="submit" value="Submit">
+
+    <input type="reset" value="Reset">
+
+</form>
+Radio Button
+
+Radio buttons are generally used when the user should select one option.
+
+<p>Gender:</p>
+
+<input type="radio" name="gender" value="male">
+<label>Male</label>
+
+<input type="radio" name="gender" value="female">
+<label>Female</label>
+
+The same name="gender" groups the radio buttons together.
+
+Checkbox
+
+Checkboxes allow the user to select multiple options.
+
+<p>Skills:</p>
+
+<input type="checkbox" name="skill" value="java">
+<label>Java</label>
+
+<input type="checkbox" name="skill" value="html">
+<label>HTML</label>
+
+<input type="checkbox" name="skill" value="css">
+<label>CSS</label>
