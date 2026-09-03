@@ -1,0 +1,139 @@
+1. CSS Selectors
+A selector is used to select HTML elements that we want to style.
+A. Element Selector
+Selects all elements of a particular type.
+p {
+    color: blue;
+}
+This applies to all <p> elements.
+<p>Hello</p>
+<p>Welcome</p>
+
+B. ID Selector
+Selects an element using its id.
+<h1 id="title">Welcome</h1>
+#title {
+    color: red;
+}
+# is used for an ID selector.
+An ID should generally be unique on a page.
+
+C. Class Selector
+Selects elements using a class.
+<p class="text">Hello</p>
+<p class="text">Welcome</p>
+.text {
+    color: green;
+}
+. is used for a class selector.
+
+D. Universal Selector
+Selects all HTML elements.
+* {
+    margin: 0;
+    padding: 0;
+}
+
+E. Group Selector
+Used when multiple elements have the same styling.
+h1, h2, p {
+    color: blue;
+}
+
+2. CSS Box Model
+Every HTML element is treated as a box.
+The CSS Box Model consists of:
+┌───────────────────────────────┐
+│            Margin             │
+│  ┌─────────────────────────┐  │
+│  │         Border          │  │
+│  │  ┌───────────────────┐  │  │
+│  │  │      Padding      │  │  │
+│  │  │  ┌─────────────┐  │  │  │
+│  │  │  │   Content   │  │  │  │
+│  │  │  └─────────────┘  │  │  │
+│  │  └───────────────────┘  │  │
+│  └─────────────────────────┘  │
+└───────────────────────────────┘
+The four parts are:
+Content
+Padding
+Border
+Margin
+Example:
+.box {
+    width: 200px;
+    height: 100px;
+
+    padding: 20px;
+    border: 2px solid black;
+    margin: 30px;
+}
+
+3. Margin
+Margin creates space outside an element.
+.box {
+    margin: 20px;
+}
+Individual sides
+.box {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    margin-left: 40px;
+}
+Shorthand
+.box {
+    margin: 10px 20px 30px 40px;
+}
+Order:
+Top → Right → Bottom → Left
+Center an element
+.box {
+    width: 500px;
+    margin: 0 auto;
+}
+auto can be used to horizontally center a block element with a defined width.
+
+4. Padding
+Padding creates space inside an element, between the content and border.
+.box {
+    padding: 20px;
+}
+Example:
+<div class="box">
+    Hello World
+</div>
+.box {
+    background-color: lightblue;
+    padding: 30px;
+}
+Individual sides
+.box {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+}
+
+5. Border
+A border creates a visible boundary around an element.
+.box {
+    border: 2px solid black;
+}
+Border has three main properties:
+border-width: 2px;
+border-style: solid;
+border-color: black;
+Border styles
+border-style: solid;
+border-style: dashed;
+border-style: dotted;
+border-style: double;
+Example:
+.card {
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+border-radius is used to create rounded corners.
+
