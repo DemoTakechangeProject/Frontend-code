@@ -1,0 +1,130 @@
+text-align in CSS
+
+The CSS text-align property is used to align text horizontally inside an element.
+Syntax
+selector {
+    text-align: value;
+}
+
+| Value     | Meaning                                       |
+| --------- | --------------------------------------------- |
+| `left`    | Aligns text to the left                       |
+| `center`  | Aligns text to the center                     |
+| `right`   | Aligns text to the right                      |
+| `start`   | Aligns according to the writing direction     |
+| `end`     | Aligns opposite to `start`                    |
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+<section> in HTML
+
+The <section> element is a semantic HTML5 element used to group related content together.
+
+Syntax
+<section>
+    <h2>Section Title</h2>
+    <p>Section content goes here.</p>
+</section>
+
+------------------------------------------------------------------------------------------------------------------------
+<footer> in HTML
+The <footer> element is a semantic HTML5 element used to define the footer (bottom section) of a webpage or a section.
+
+Basic Syntax :
+<footer>
+    Footer content
+</footer>
+
+Easy way to remember:
+<footer> = Bottom/closing information of a webpage or section, such as copyright, contact information, navigation links, and social-media links.
+
+<section> vs <div>
+| `<section>`                                | `<div>`                        |
+| ------------------------------------------ | ------------------------------ |
+| Semantic element                           | Non-semantic element           |
+| Represents a meaningful section of content | Generic container              |
+| Usually has a heading                      | Heading is not required        |
+| Helps SEO and accessibility                | Mainly used for styling/layout |
+
+------------------------------------------------------------------------------------------------------------------------
+font-family in CSS
+
+The font-family property is used to specify the font/typeface of text on a webpage.
+Syntax :
+
+selector {
+    font-family: font-name;
+}
+
+------------------------------------------------------------------------------------------------------------------------
+Border Radius in CSS
+
+The border-radius property is used to make the corners of an HTML element rounded.
+
+Basic border-radius
+
+.box {
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+    border-radius: 20px;
+}
+
+-- Different Radius for Each Corner
+
+You can specify four values:
+
+.box {
+    border-radius: 10px 20px 30px 40px;
+}
+
+The order is :
+          TOP
+     10px      20px
+       ↖      ↗
+       ┌──────┐
+       │      │
+       └──────┘
+       ↙      ↘
+     40px      30px
+         BOTTOM
+
+| CSS Property                 | Purpose      |
+| ---------------------------- | ------------ |
+| `border-radius`              | All corners  |
+| `border-top-left-radius`     | Top-left     |
+| `border-top-right-radius`    | Top-right    |
+| `border-bottom-right-radius` | Bottom-right |
+| `border-bottom-left-radius`  | Bottom-left  |
+
+------------------------------------------------------------------------------------------------------------------------
+box-shadow in CSS
+
+The box-shadow property is used to add a shadow around an HTML element, such as a <div>, card, button, or image.
+
+Syntax
+box-shadow: horizontal vertical blur spread color;
+
+Example :
+.box {
+    width: 200px;
+    height: 100px;
+    background-color: white;
+
+    box-shadow: 5px 5px 10px gray;
+}
+
+Understanding the Values :
+
+box-shadow: 5px 5px 10px gray;
+            │    │    │    │
+            │    │    │    └── Color
+            │    │    └─────── Blur
+            │    └──────────── Vertical
+            └───────────────── Horizontal
+
+------------------------------------------------------------------------------------------------------------------------
+max-width and max-height in CSS
+
+max-width and max-height are used to set the maximum size an HTML element is allowed to reach.
