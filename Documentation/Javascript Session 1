@@ -1,0 +1,296 @@
+JavaScript Fundamentals
+JavaScript is a programming language used to make web pages interactive and dynamic.
+It works together with:
+HTML → Structure
+CSS → Design
+JavaScript → Behavior / Logic
+
+1. Variables
+Variables are used to store data.
+JavaScript provides three keywords:
+let → value can be changed
+const → value cannot be reassigned
+var → older way of declaring variables
+Example
+let name = "Pritish";
+let age = 28;
+
+console.log(name);
+console.log(age);
+Changing a variable
+let marks = 50;
+
+marks = 80;
+
+console.log(marks);
+Output:
+80
+const
+const pi = 3.14;
+
+console.log(pi);
+You cannot do:
+pi = 4;
+Best practice
+Use:
+const
+when the value doesn't need reassignment, and:
+let
+when it does.
+
+2. Data Types
+A data type tells JavaScript what kind of data a variable contains.
+Common data types
+Data Type
+Example
+String
+"Hello"
+Number
+100
+Boolean
+true
+Undefined
+undefined
+Null
+null
+Object
+{name: "Rahul"}
+Array
+[10, 20, 30]
+
+String
+let name = "Rahul";
+Number
+let age = 25;
+let salary = 50000;
+Boolean
+let isStudent = true;
+Undefined
+let city;
+
+console.log(city);
+Output:
+undefined
+Null
+let address = null;
+Checking data type
+Use typeof.
+let name = "Rahul";
+
+console.log(typeof name);
+Output:
+string
+Example:
+console.log(typeof 100);
+console.log(typeof true);
+Output:
+number
+boolean
+
+3. Operators
+Operators are used to perform operations on values.
+Arithmetic Operators
+Operator
+Meaning
++
+Addition
+-
+Subtraction
+*
+Multiplication
+/
+Division
+%
+Remainder
+**
+Power
+
+Example
+let a = 20;
+let b = 10;
+
+console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);
+console.log(a % b);
+Output:
+30
+10
+200
+2
+0
+
+Comparison Operators
+Used to compare two values.
+let a = 10;
+let b = 20;
+
+console.log(a == b);
+console.log(a != b);
+console.log(a > b);
+console.log(a < b);
+console.log(a >= b);
+console.log(a <= b);
+===
+=== checks both value and data type.
+console.log(10 === 10);
+Output:
+true
+console.log(10 === "10");
+Output:
+false
+For modern JavaScript, prefer === and !== for comparisons.
+
+Logical Operators
+Operator
+Meaning
+&&
+AND
+`
+
+
+!
+NOT
+
+Example:
+let age = 25;
+let hasId = true;
+
+console.log(age >= 18 && hasId);
+Output:
+true
+
+4. Conditions
+Conditions are used to make decisions.
+if
+let age = 20;
+
+if (age >= 18) {
+    console.log("You can vote");
+}
+
+if...else
+let age = 16;
+
+if (age >= 18) {
+    console.log("Adult");
+} else {
+    console.log("Minor");
+}
+Output:
+Minor
+
+if...else if...else
+let marks = 75;
+
+if (marks >= 90) {
+    console.log("Grade A+");
+} else if (marks >= 75) {
+    console.log("Grade A");
+} else if (marks >= 60) {
+    console.log("Grade B");
+} else {
+    console.log("Fail");
+}
+Output:
+Grade A
+
+Ternary Operator
+Short form of if...else.
+let age = 20;
+
+let result = age >= 18 ? "Adult" : "Minor";
+
+console.log(result);
+
+5. Loops
+Loops are used to repeat a block of code.
+for Loop
+Syntax:
+for (initialization; condition; increment) {
+    // code
+}
+Example:
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}
+Output:
+1
+2
+3
+4
+5
+How it works
+i = 1
+ ↓
+i <= 5 ? → Yes
+ ↓
+Print i
+ ↓
+i++
+ ↓
+Repeat
+
+while Loop
+let i = 1;
+
+while (i <= 5) {
+    console.log(i);
+
+    i++;
+}
+
+do...while
+The code executes at least once.
+let i = 1;
+
+do {
+    console.log(i);
+
+    i++;
+} while (i <= 5);
+
+6. Functions
+A function is a block of code designed to perform a specific task.
+Function declaration
+function greet() {
+    console.log("Hello");
+}
+
+greet();
+Output:
+Hello
+
+Function with parameters
+function greet(name) {
+    console.log("Hello " + name);
+}
+
+greet("Rahul");
+greet("Priya");
+Output:
+Hello Rahul
+Hello Priya
+
+Function with return
+function add(a, b) {
+    return a + b;
+}
+
+let result = add(10, 20);
+
+console.log(result);
+Output:
+30
+Important terms
+function add(a, b) {
+    return a + b;
+}
+
+add(10, 20);
+add → Function name
+a, b → Parameters
+10, 20 → Arguments
+return → Sends a value back
+
