@@ -1,26 +1,32 @@
-7. Arrow Functions
+Arrow Functions
 Arrow functions provide a shorter syntax for writing functions.
+
 Normal function
 function add(a, b) {
     return a + b;
 }
+
 Arrow function
 const add = (a, b) => {
     return a + b;
 };
+
 Shorter version
 const add = (a, b) => a + b;
+
 Example:
 const square = (number) => number * number;
 
 console.log(square(5));
 Output:
 25
+
 One parameter
 Parentheses can be omitted for a single parameter:
-const double = number => number * 2;
 
+const double = number => number * 2;
 console.log(double(10));
+
 Output:
 20
 
