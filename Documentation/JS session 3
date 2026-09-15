@@ -1,0 +1,139 @@
+Arrays
+An array is used to store multiple values in a single variable.
+let fruits = ["Apple", "Mango", "Banana"];
+
+console.log(fruits);
+Access array elements
+Array index starts from 0.
+let fruits = ["Apple", "Mango", "Banana"];
+
+console.log(fruits[0]);
+console.log(fruits[1]);
+console.log(fruits[2]);
+Output:
+Apple
+Mango
+Banana
+Change an element
+let fruits = ["Apple", "Mango", "Banana"];
+
+fruits[1] = "Orange";
+
+console.log(fruits);
+
+Common Array Properties/Methods
+length
+let numbers = [10, 20, 30, 40];
+
+console.log(numbers.length);
+Output:
+4
+push()
+Adds an element at the end.
+let numbers = [10, 20];
+
+numbers.push(30);
+
+console.log(numbers);
+pop()
+Removes the last element.
+numbers.pop();
+for...of
+Used to iterate through array values.
+let fruits = ["Apple", "Mango", "Banana"];
+
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+9. Objects
+An object stores data in key-value pairs.
+Example:
+let student = {
+    name: "Rahul",
+    age: 22,
+    course: "Java Full Stack"
+};
+Here:
+name   → Rahul
+age    → 22
+course → Java Full Stack
+Access object properties
+Using dot notation:
+console.log(student.name);
+console.log(student.age);
+Output:
+Rahul
+22
+Using bracket notation:
+console.log(student["course"]);
+Output:
+Java Full Stack
+Change property
+student.age = 23;
+Add property
+student.city = "Pune";
+Now:
+console.log(student);
+
+1. Destructuring
+Destructuring is used to extract values from arrays or objects and store them in variables.
+Array Destructuring
+Without destructuring:
+const fruits = ["Apple", "Mango", "Banana"];
+
+const first = fruits[0];
+const second = fruits[1];
+
+console.log(first);
+console.log(second);
+With destructuring:
+const fruits = ["Apple", "Mango", "Banana"];
+
+const [first, second, third] = fruits;
+
+console.log(first);
+console.log(second);
+console.log(third);
+Output:
+Apple
+Mango
+Banana
+Skipping values
+const numbers = [10, 20, 30];
+
+const [first, , third] = numbers;
+
+console.log(first);
+console.log(third);
+Output:
+10
+30
+
+Object Destructuring
+Consider:
+const student = {
+    name: "Rahul",
+    age: 22,
+    course: "Java"
+};
+Without destructuring:
+console.log(student.name);
+console.log(student.age);
+With destructuring:
+const { name, age, course } = student;
+
+console.log(name);
+console.log(age);
+console.log(course);
+Rename variables
+const student = {
+    name: "Rahul",
+    age: 22
+};
+
+const { name: studentName, age: studentAge } = student;
+
+console.log(studentName);
+console.log(studentAge);
+
