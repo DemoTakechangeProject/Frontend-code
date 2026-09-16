@@ -1,0 +1,58 @@
+2. Spread Operator
+The spread operator (...) is used to expand or copy elements from an array or properties from an object.
+Array
+const numbers1 = [10, 20, 30];
+
+const numbers2 = [...numbers1];
+
+console.log(numbers2);
+Output:
+[10, 20, 30]
+Combine arrays
+const first = [10, 20];
+const second = [30, 40];
+
+const result = [...first, ...second];
+
+console.log(result);
+Output:
+[10, 20, 30, 40]
+Add new elements
+const numbers = [20, 30];
+
+const result = [10, ...numbers, 40];
+
+console.log(result);
+Output:
+[10, 20, 30, 40]
+
+Object Spread
+const student = {
+    name: "Rahul",
+    age: 22
+};
+
+const updatedStudent = {
+    ...student,
+    city: "Pune"
+};
+
+console.log(updatedStudent);
+Output:
+{
+    name: "Rahul",
+    age: 22,
+    city: "Pune"
+}
+Updating an object
+const student = {
+    name: "Rahul",
+    age: 22
+};
+
+const updatedStudent = {
+    ...student,
+    age: 23
+};
+
+console.log(updatedStudent);

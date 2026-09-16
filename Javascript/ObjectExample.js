@@ -1,10 +1,10 @@
-let student = {
-    roll:101,
-    sname:"Ankita",
-    age:20,
-    per:90.20,
-    isPass:true
-}
+// let student = {
+//     roll:101,
+//     sname:"Ankita",
+//     age:20,
+//     per:90.20,
+//     isPass:true
+// }
 
 // console.log(student);
 
@@ -26,6 +26,30 @@ let student = {
 
 // Rename Variable
 
-const {sname:studentName,roll:studentRoll,isPass:studentIsPass} = student;
+// const {sname:studentName,roll:studentRoll,isPass:studentIsPass} = student;
 
-console.log(studentName,studentRoll,studentIsPass);
+// console.log(studentName,studentRoll,studentIsPass);
+
+
+// Second day
+
+let student = {
+    roll:101,
+    name:"Gayatri",
+    age:20,
+    marks:[60,70,80,59,90],
+    place:{
+        native:"Nashik",
+        current:"Pune"
+    }
+}
+
+// console.log(student.roll);
+// console.log(student.marks);
+// console.log(student.marks[2]);
+
+// for(let temp of student.marks){
+//     console.log(temp);
+// }
+
+console.log(student.place.native);
