@@ -1,0 +1,196 @@
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
+|  104 | Ankita  | Nashik |
++------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select *from student where city='Nashik';
++------+--------+--------+
+| roll | sname  | city   |
++------+--------+--------+
+|  101 | Ankita | Nashik |
+|  104 | Ankita | Nashik |
++------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
+|  104 | Ankita  | Nashik |
++------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select *from student where roll>=103;
++------+--------+--------+
+| roll | sname  | city   |
++------+--------+--------+
+|  103 | Yogesh | Mumbai |
+|  104 | Ankita | Nashik |
++------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> create table teacher(tid int primary key,tname varchar(30),age int,salary int);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc teacher;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| tid    | int         | NO   | PRI | NULL    |       |
+| tname  | varchar(30) | YES  |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into teacher values(401,'Mr.Sharama',56,60000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into teacher values(402,'Mr.Jadhav',40,50000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into teacher values(403,'Mr.Aher',48,90000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into teacher values(404,'Mr.Sonawane',70,20000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into teacher values(405,'Mr.Gite',60,40000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into teacher values(405,'Mr.Kushare',37,80000);
+ERROR 1062 (23000): Duplicate entry '405' for key 'teacher.PRIMARY'
+mysql> insert into teacher values(406,'Mr.Kushare',37,80000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  50000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
++-----+-------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select tname from teacher where age!=28;
++-------------+
+| tname       |
++-------------+
+| Mr.Sharama  |
+| Mr.Jadhav   |
+| Mr.Aher     |
+| Mr.Sonawane |
+| Mr.Gite     |
+| Mr.Kushare  |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql> select tname from teacher where age!=48;
++-------------+
+| tname       |
++-------------+
+| Mr.Sharama  |
+| Mr.Jadhav   |
+| Mr.Sonawane |
+| Mr.Gite     |
+| Mr.Kushare  |
++-------------+
+5 rows in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  50000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
++-----+-------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select tname,age from teacher where salary >= 50000 AND age<=54;
++------------+------+
+| tname      | age  |
++------------+------+
+| Mr.Jadhav  |   40 |
+| Mr.Aher    |   48 |
+| Mr.Kushare |   37 |
++------------+------+
+3 rows in set (0.00 sec)
+
+mysql> select tname from teacher where salary>55000 AND salary<90000;
++------------+
+| tname      |
++------------+
+| Mr.Sharama |
+| Mr.Kushare |
++------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  50000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
++-----+-------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
+|  104 | Ankita  | Nashik |
++------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select sname from student where NOT city='Pune';
++--------+
+| sname  |
++--------+
+| Ankita |
+| Yogesh |
+| Ankita |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> update teacher set salary=80000 where tname = 'Mr.Jadhav';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
++-----+-------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql>
