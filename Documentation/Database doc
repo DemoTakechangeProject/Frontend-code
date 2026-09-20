@@ -1,0 +1,568 @@
+1. What is Data & Database?
+What is Data?
+
+Data is a collection of raw facts and information.
+
+Examples:
+
+Ankita
+25
+Pune
+B.Sc. Computer Science
+85
+
+These individual values are called data.
+
+What is a Database?
+
+A database is an organized collection of data that allows us to store, manage, and retrieve information easily.
+
+Real-world example
+
+A college may need to store:
+
+Student ID
+Student Name
+Age
+Course
+Marks
+Mobile Number
+
+Instead of maintaining thousands of records in notebooks, we can store them in a database.
+
+Simple example
+Student Database
+│
+├── Student ID
+├── Name
+├── Age
+├── Course
+└── Marks
+
+Simple definition for students:
+
+A database is an organized collection of related data.
+
+2. What is DBMS?
+
+DBMS = Database Management System
+
+A DBMS is software used to create, store, manage, update, and retrieve data from a database.
+
+Examples of DBMS
+MySQL
+Oracle Database
+Microsoft SQL Server
+PostgreSQL
+SQLite
+What can a DBMS do?
+
+A DBMS allows us to:
+
+Create databases
+Create tables
+Insert data
+Update data
+Delete data
+Search/retrieve data
+Control access to data
+Example
+
+Suppose a college has 10,000 student records.
+
+Using a DBMS, we can easily ask:
+
+SELECT * FROM students;
+
+and retrieve the student information.
+
+Simple definition
+
+DBMS is software that helps us manage databases.
+
+3. DBMS vs RDBMS
+DBMS
+
+DBMS = Database Management System
+
+It is a system used to manage data.
+
+RDBMS
+
+RDBMS = Relational Database Management System
+
+It stores data in tables and establishes relationships between tables.
+
+Example
+
+Suppose we have:
+
+Students table
+
+student_id	name	course_id
+1	Rahul	101
+2	Priya	102
+
+Courses table
+
+course_id	course_name
+101	BCA
+102	BSc CS
+
+Here, course_id connects the two tables.
+
+This is the relational concept.
+
+DBMS vs RDBMS
+DBMS	RDBMS
+Database Management System	Relational Database Management System
+May not use relationships between tables	Uses relationships between tables
+Data organization can vary	Data is generally organized into tables
+Relationship support is limited/not inherent	Supports relationships using keys
+Suitable for simpler data management	Suitable for relational applications
+Examples
+
+RDBMS:
+
+MySQL
+Oracle
+PostgreSQL
+SQL Server
+
+Important: MySQL is an RDBMS.
+
+4. Introduction to SQL
+
+SQL = Structured Query Language
+
+SQL is used to communicate with and manage data in relational databases.
+
+We can use SQL to:
+
+Create databases
+Create tables
+Insert data
+Retrieve data
+Update data
+Delete data
+Example
+SELECT * FROM students;
+
+This SQL query means:
+
+Display all records from the students table.
+
+Another example
+INSERT INTO students VALUES
+(1, 'Rahul', 20, 'BCA');
+
+This adds a student record.
+
+Simple definition
+
+SQL is a language used to communicate with relational databases.
+
+6. Introduction to MySQL
+
+MySQL is an open-source relational database management system (RDBMS) that uses SQL to work with relational data.
+
+For example, a Java/Spring Boot application can use MySQL to store:
+
+Users
+Products
+Orders
+Payments
+Students
+Employees
+Example architecture
+Java / Spring Boot Application
+            ↓
+           SQL
+            ↓
+          MySQL
+            ↓
+        Database
+            ↓
+          Tables
+SQL vs MySQL
+
+This is an important distinction for beginners:
+
+SQL → Language
+
+MySQL → Database Management System that uses SQL
+
+For example:
+
+SELECT * FROM students;
+
+is SQL.
+
+MySQL is one of the database systems in which you can execute that SQL.
+
+7. Creating a Database
+
+We can create a database using CREATE DATABASE.
+
+Syntax
+CREATE DATABASE database_name;
+Example
+CREATE DATABASE college;
+
+Now we have a database called college.
+
+Check available databases
+SHOW DATABASES;
+Select the database
+
+Before creating tables, select the database:
+
+USE college;
+
+Now any tables we create will be created inside the college database.
+
+Complete example
+CREATE DATABASE college;
+
+USE college;
+8. Creating Tables
+
+A table stores data in the form of rows and columns.
+
+For example:
+
+Students
+id	name	age	course
+1	Rahul	20	BCA
+2	Priya	21	BSc CS
+Create the table
+CREATE TABLE students (
+    id INT,
+    name VARCHAR(50),
+    age INT,
+    course VARCHAR(30)
+);
+Check tables
+SHOW TABLES;
+See table structure
+DESC students;
+
+or:
+
+DESCRIBE students;
+9. Understanding Data Types
+
+A data type defines what kind of value can be stored in a column.
+
+Some commonly used MySQL data types are:
+
+Data Type	Used For	Example
+INT	Whole numbers	25
+DECIMAL	Decimal numbers	95.50
+VARCHAR	Variable-length text	'Rahul'
+CHAR	Fixed-length text	'M'
+DATE	Date	'2026-09-20'
+TIME	Time	'10:30:00'
+DATETIME	Date + time	'2026-09-20 10:30:00'
+TEXT	Large text	'Description...'
+BOOLEAN	True/false style values	TRUE
+Example
+CREATE TABLE students (
+    id INT,
+    name VARCHAR(50),
+    age INT,
+    marks DECIMAL(5,2),
+    birth_date DATE
+);
+
+Here:
+
+id          → INT
+name        → VARCHAR
+age         → INT
+marks       → DECIMAL
+birth_date  → DATE
+VARCHAR(50)
+name VARCHAR(50)
+
+means the column can store variable-length text up to 50 characters.
+
+10. INSERT — Adding Records
+
+INSERT is used to add records/rows into a table.
+
+Suppose we have:
+
+CREATE TABLE students (
+    id INT,
+    name VARCHAR(50),
+    age INT,
+    course VARCHAR(30)
+);
+Method 1: INSERT with column names
+INSERT INTO students (id, name, age, course)
+VALUES (1, 'Rahul', 20, 'BCA');
+
+Insert another student:
+
+INSERT INTO students (id, name, age, course)
+VALUES (2, 'Priya', 21, 'BSc CS');
+INSERT Multiple Records
+
+You can insert multiple rows using a single query:
+
+INSERT INTO students (id, name, age, course)
+VALUES
+(3, 'Amit', 19, 'BCA'),
+(4, 'Sneha', 22, 'BSc CS'),
+(5, 'Rohit', 20, 'BCA');
+
+This is very useful when inserting multiple records.
+
+Method 2: INSERT without column names
+
+If you provide values for all columns in the exact table-column order, you can omit the column names:
+
+INSERT INTO students
+VALUES (6, 'Neha', 21, 'BSc CS');
+Multiple records without column names
+INSERT INTO students
+VALUES
+(7, 'Kiran', 20, 'BCA'),
+(8, 'Pooja', 21, 'BSc CS'),
+(9, 'Akash', 19, 'BCA');
+⚠️ Important
+
+When column names are omitted:
+
+INSERT INTO students
+VALUES (...);
+
+the values must match the table's column order and compatible data types.
+
+1. Create Sample Table
+CREATE TABLE students (
+    id INT,
+    name VARCHAR(50),
+    age INT,
+    course VARCHAR(30),
+    city VARCHAR(30),
+    marks INT,
+    fees INT
+);
+Insert sample data
+INSERT INTO students VALUES
+(1, 'Rahul', 20, 'BSc CS', 'Pune', 85, 50000),
+(2, 'Priya', 21, 'BSc CS', 'Mumbai', 72, 50000),
+(3, 'Amit', 19, 'BCA', 'Nashik', 91, 45000),
+(4, 'Sneha', 22, 'BCA', 'Pune', 65, 45000),
+(5, 'Rohit', 20, 'BSc CS', 'Nashik', 78, 50000);
+
+Now imagine our table looks like this:
+
+id	name	age	course	city	marks	fees
+1	Rahul	20	BSc CS	Pune	85	50000
+2	Priya	21	BSc CS	Mumbai	72	50000
+3	Amit	19	BCA	Nashik	91	45000
+4	Sneha	22	BCA	Pune	65	45000
+5	Rohit	20	BSc CS	Nashik	78	50000
+2. SELECT Statement
+
+SELECT is used to retrieve/read data from a table.
+
+Select all columns
+SELECT * FROM students;
+
+* means all columns.
+
+Select specific columns
+SELECT name, marks FROM students;
+
+Output:
+
+name	marks
+Rahul	85
+Priya	72
+Amit	91
+Sneha	65
+Rohit	78
+3. Selecting Specific Columns
+
+You don't always need all columns.
+
+SELECT name, city, course
+FROM students;
+
+This returns only:
+
+name + city + course
+
+Multiple columns
+SELECT id, name, marks, city
+FROM students;
+4. WHERE Clause
+
+WHERE is used to filter records based on a condition.
+
+Example
+SELECT *
+FROM students
+WHERE city = 'Pune';
+
+Output:
+
+id	name	city
+1	Rahul	Pune
+4	Sneha	Pune
+Marks greater than 80
+SELECT *
+FROM students
+WHERE marks > 80;
+
+Result:
+
+Rahul → 85
+Amit → 91
+
+5. Operators in SQL
+
+Operators are used to create conditions and perform calculations.
+
+There are three important categories here:
+
+Arithmetic operators
+Comparison operators
+Logical operators
+5.1 Arithmetic Operators
+
+Arithmetic operators perform mathematical operations.
+
+Operator	Meaning
++	Addition
+-	Subtraction
+*	Multiplication
+/	Division
+%	Modulus / Remainder
+Example
+
+Suppose we want to increase marks by 5:
+
+SELECT name, marks, marks + 5 AS updated_marks
+FROM students;
+
+Output:
+
+name	marks	updated_marks
+Rahul	85	90
+Priya	72	77
+Amit	91	96
+Multiplication example
+SELECT name, fees, fees * 2 AS double_fees
+FROM students;
+
+AS is used to give an alias (temporary name) to the calculated column.
+
+6. Comparison Operators
+
+Comparison operators compare two values.
+
+Operator	Meaning
+=	Equal
+!=	Not equal
+>	Greater than
+<	Less than
+>=	Greater than or equal
+<=	Less than or equal
+Equal to
+SELECT *
+FROM students
+WHERE city = 'Pune';
+Greater than
+SELECT *
+FROM students
+WHERE marks > 80;
+Less than
+SELECT *
+FROM students
+WHERE marks < 70;
+Greater than or equal
+SELECT *
+FROM students
+WHERE marks >= 80;
+Not equal
+SELECT *
+FROM students
+WHERE city != 'Pune';
+7. Logical Operators
+
+Logical operators allow us to combine multiple conditions.
+
+Main logical operators:
+
+AND
+OR
+NOT
+AND
+
+Both conditions must be true.
+
+SELECT *
+FROM students
+WHERE marks > 70
+AND city = 'Pune';
+
+Meaning:
+
+Find students whose marks are greater than 70 AND who live in Pune.
+
+OR
+
+At least one condition must be true.
+
+SELECT *
+FROM students
+WHERE city = 'Pune'
+OR city = 'Nashik';
+
+Meaning:
+
+Find students from Pune OR Nashik.
+
+NOT
+
+Used to reverse a condition.
+
+SELECT *
+FROM students
+WHERE NOT city = 'Pune';
+
+Meaning:
+
+Find students who are not from Pune.
+
+8. UPDATE Records
+
+UPDATE is used to modify existing records.
+
+Example
+
+Suppose Rahul's marks are 85 and we want to change them to 90:
+
+UPDATE students
+SET marks = 90
+WHERE id = 1;
+
+Check:
+
+SELECT * FROM students
+WHERE id = 1;
+⚠️ Important
+
+Always be careful with WHERE.
+
+❌ Don't do this unless you intentionally want to update every row:
+
+UPDATE students
+SET marks = 90;
+
+This changes marks of every student to 90.
