@@ -1,0 +1,62 @@
+LIKE
+
+LIKE is used for pattern matching.
+
+It is particularly useful when searching text.
+
+There are two important wildcards:
+
+% → any number of characters
+_ → exactly one character
+Names starting with R
+SELECT *
+FROM students
+WHERE name LIKE 'R%';
+
+Result:
+
+Rahul
+Rohit
+Names ending with a
+SELECT *
+FROM students
+WHERE name LIKE '%a';
+Names containing "it"
+SELECT *
+FROM students
+WHERE name LIKE '%it%';
+14. BETWEEN
+
+BETWEEN is used to check whether a value falls within a range.
+
+Marks between 70 and 90
+SELECT *
+FROM students
+WHERE marks BETWEEN 70 AND 90;
+
+This includes 70 and 90.
+
+Age between 19 and 21
+SELECT *
+FROM students
+WHERE age BETWEEN 19 AND 21;
+15. IN
+
+IN is used when you want to check against multiple possible values.
+
+Instead of:
+
+SELECT *
+FROM students
+WHERE city = 'Pune'
+OR city = 'Nashik';
+
+You can write:
+
+SELECT *
+FROM students
+WHERE city IN ('Pune', 'Nashik');
+Course example
+SELECT *
+FROM students
+WHERE course IN ('BCA', 'BSc CS');

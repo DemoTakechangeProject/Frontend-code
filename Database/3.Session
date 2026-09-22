@@ -1,0 +1,158 @@
+mysql> use college;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| student           |
+| teacher           |
++-------------------+
+2 rows in set (0.04 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
+|  104 | Ankita  | Nashik |
++------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> delete from student where roll=104 AND city='Nashik';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
++------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
++-----+-------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select *from student order by salary ASC;
+ERROR 1054 (42S22): Unknown column 'salary' in 'order clause'
+mysql> select *from teacher order by salary ASC;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
++-----+-------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select *from teacher order by age desc;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
++-----+-------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select tname from teacher order by salary desc;
++-------------+
+| tname       |
++-------------+
+| Mr.Aher     |
+| Mr.Jadhav   |
+| Mr.Kushare  |
+| Mr.Sharama  |
+| Mr.Gite     |
+| Mr.Sonawane |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
++-----+-------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select tname from teacher order by age desc limit 2;
++-------------+
+| tname       |
++-------------+
+| Mr.Sonawane |
+| Mr.Gite     |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> select distinct salary from teacher;
++--------+
+| salary |
++--------+
+|  60000 |
+|  80000 |
+|  90000 |
+|  20000 |
+|  40000 |
++--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into teacher values(407,'Mr.Jadhav',49,44000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into teacher values(408,'Mr.Gite',68,42000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 407 | Mr.Jadhav   |   49 |  44000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select distinct tname from teacher;
++-------------+
+| tname       |
++-------------+
+| Mr.Sharama  |
+| Mr.Jadhav   |
+| Mr.Aher     |
+| Mr.Sonawane |
+| Mr.Gite     |
+| Mr.Kushare  |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql>

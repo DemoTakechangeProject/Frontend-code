@@ -1,0 +1,434 @@
+1. Aggregate Functions
+
+Aggregate functions perform calculations on multiple rows and return a single result.
+
+The five important aggregate functions are:
+
+Function	Purpose
+COUNT()	Counts records
+SUM()	Calculates total
+AVG()	Calculates average
+MIN()	Finds minimum value
+MAX()	Finds maximum value
+
+Let's use this table:
+
+students
+id	name	course	marks	fees
+1	Rahul	BCA	85	45000
+2	Priya	BSc CS	72	50000
+3	Amit	BCA	91	45000
+4	Sneha	BSc CS	65	50000
+5	Rohit	BCA	78	45000
+1.1 COUNT()
+
+COUNT() is used to count records.
+
+Count all students
+SELECT COUNT(*) AS total_students
+FROM students;
+
+Output:
+
+total_students
+5
+Count students with marks
+SELECT COUNT(marks) AS students_with_marks
+FROM students;
+Simple meaning
+
+COUNT() tells us how many records we have.
+
+1.2 SUM()
+
+SUM() calculates the total of a numeric column.
+
+Total fees
+SELECT SUM(fees) AS total_fees
+FROM students;
+
+Result:
+
+235000
+Total marks
+SELECT SUM(marks) AS total_marks
+FROM students;
+1.3 AVG()
+
+AVG() calculates the average.
+
+Average marks
+SELECT AVG(marks) AS average_marks
+FROM students;
+
+For our data:
+
+(85 + 72 + 91 + 65 + 78) / 5
+= 78.2
+
+Result:
+
+78.20
+1.4 MIN()
+
+MIN() finds the smallest value.
+
+Lowest marks
+SELECT MIN(marks) AS lowest_marks
+FROM students;
+
+Output:
+
+65
+Lowest fees
+SELECT MIN(fees) AS minimum_fees
+FROM students;
+1.5 MAX()
+
+MAX() finds the largest value.
+
+Highest marks
+SELECT MAX(marks) AS highest_marks
+FROM students;
+
+Output:
+
+91
+⭐ Using Multiple Aggregate Functions Together
+
+We can use multiple functions in one query:
+
+SELECT
+    COUNT(*) AS total_students,
+    SUM(marks) AS total_marks,
+    AVG(marks) AS average_marks,
+    MIN(marks) AS minimum_marks,
+    MAX(marks) AS maximum_marks
+FROM students;
+
+Output:
+
+total_students	total_marks	average_marks	minimum_marks	maximum_marks
+5	391	78.2	65	91
+2. GROUP BY
+
+GROUP BY is used to group rows having the same value.
+
+For example, our students belong to:
+
+BCA
+BSc CS
+
+We can group students according to their course.
+
+Count students in each course
+SELECT course, COUNT(*) AS total_students
+FROM students
+GROUP BY course;
+
+Output:
+
+course	total_students
+BCA	3
+BSc CS	2
+How it works
+
+Without GROUP BY:
+
+SELECT COUNT(*)
+FROM students;
+
+Result:
+
+5
+
+With GROUP BY:
+
+SELECT course, COUNT(*)
+FROM students
+GROUP BY course;
+
+Result:
+
+BCA     → 3
+BSc CS  → 2
+
+So:
+
+GROUP BY divides records into groups and allows aggregate functions to work on each group.
+
+GROUP BY with AVG()
+
+Find average marks for each course:
+
+SELECT
+    course,
+    AVG(marks) AS average_marks
+FROM students
+GROUP BY course;
+
+Result:
+
+course	average_marks
+BCA	84.67
+BSc CS	68.50
+GROUP BY with SUM()
+
+Find total fees collected from each course:
+
+SELECT
+    course,
+    SUM(fees) AS total_fees
+FROM students
+GROUP BY course;
+3. HAVING
+
+HAVING is used to filter groups created by GROUP BY.
+
+This is an important difference:
+
+WHERE
+
+Filters individual rows.
+
+HAVING
+
+Filters groups.
+
+Example
+
+Find courses having more than 2 students:
+
+SELECT
+    course,
+    COUNT(*) AS total_students
+FROM students
+GROUP BY course
+HAVING COUNT(*) > 2;
+
+Output:
+
+course	total_students
+BCA	3
+
+Because:
+
+BCA → 3 students
+BSc CS → 2 students
+
+Only BCA satisfies:
+
+COUNT(*) > 2
+WHERE vs HAVING
+WHERE
+SELECT *
+FROM students
+WHERE marks > 70;
+
+It filters individual students.
+
+HAVING
+SELECT course, AVG(marks)
+FROM students
+GROUP BY course
+HAVING AVG(marks) > 75;
+
+It filters the course groups.
+
+Easy rule
+
+WHERE → filter rows
+
+HAVING → filter groups
+
+4. Primary Key & Foreign Key
+
+Now let's understand relationships between tables.
+
+Suppose we have a courses table.
+
+Courses
+course_id	course_name
+101	BCA
+102	BSc CS
+103	BBA
+
+And students:
+
+Students
+student_id	name	course_id
+1	Rahul	101
+2	Priya	102
+3	Amit	101
+4	Sneha	102
+
+Here, course_id connects the two tables.
+
+Primary Key
+
+A Primary Key uniquely identifies each record in a table.
+
+Example:
+
+course_id
+
+in the courses table.
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50)
+);
+
+Values cannot be duplicated.
+
+For example:
+
+101 → BCA
+102 → BSc CS
+103 → BBA
+
+You cannot have:
+
+101 → BCA
+101 → BBA
+
+because 101 is already used as a primary key.
+
+Simple definition
+
+A primary key uniquely identifies each row in a table.
+
+Foreign Key
+
+A Foreign Key is a column that refers to a key in another table.
+
+Example:
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    course_id INT,
+    FOREIGN KEY (course_id)
+        REFERENCES courses(course_id)
+);
+
+Here:
+
+students.course_id
+        ↓
+courses.course_id
+
+The course_id in students is a Foreign Key referencing the course_id in courses.
+
+Simple definition
+
+A foreign key connects one table to another table.
+
+5. Basic Relationships Between Tables
+
+Tables can have different types of relationships.
+
+1. One-to-One
+
+One record in Table A is related to one record in Table B.
+
+Example:
+
+Person → Passport
+
+One person has one passport in a simplified model.
+
+2. One-to-Many
+
+One record in Table A can be related to many records in Table B.
+
+Example:
+
+Course
+   ↓
+Many Students
+
+One course can have many students.
+
+For example:
+
+BCA
+ ↓
+Rahul
+Amit
+Rohit
+
+This is a very common database relationship.
+
+3. Many-to-Many
+
+Many records in Table A can relate to many records in Table B.
+
+Example:
+
+Students ←→ Subjects
+
+One student can study many subjects.
+
+One subject can be studied by many students.
+
+Usually, we use a third/junction table:
+
+students
+    ↓
+student_subjects
+    ↑
+subjects
+6. Introduction to JOIN
+
+A JOIN is used to combine data from multiple tables based on a related column.
+
+Suppose:
+
+students
+student_id	name	course_id
+1	Rahul	101
+2	Priya	102
+3	Amit	101
+4	Sneha	102
+courses
+course_id	course_name
+101	BCA
+102	BSc CS
+
+We want:
+
+name	course_name
+Rahul	BCA
+Priya	BSc CS
+Amit	BCA
+Sneha	BSc CS
+
+The data is stored in two different tables, but we want to display it together.
+
+That's where JOIN is used.
+
+7. INNER JOIN Basics
+
+INNER JOIN returns records where there is a matching value in both tables.
+
+Syntax
+SELECT columns
+FROM table1
+INNER JOIN table2
+ON table1.column = table2.column;
+Example
+SELECT
+    students.name,
+    courses.course_name
+FROM students
+INNER JOIN courses
+ON students.course_id = courses.course_id;
+
+Result:
+
+name	course_name
+Rahul	BCA
+Priya	BSc CS
+Amit	BCA
+Sneha	BSc CS

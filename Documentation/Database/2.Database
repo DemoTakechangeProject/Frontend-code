@@ -1,0 +1,113 @@
+DELETE Records
+
+DELETE removes records from a table.
+
+Delete one student
+DELETE FROM students
+WHERE id = 5;
+
+Student with id = 5 will be deleted.
+
+⚠️ Important
+
+This is dangerous:
+
+DELETE FROM students;
+
+It deletes all records from the table.
+
+The table itself remains, but its data is removed.
+
+10. ORDER BY
+
+ORDER BY is used to sort records.
+
+Ascending Order
+SELECT *
+FROM students
+ORDER BY marks ASC;
+
+Lowest marks → highest marks.
+
+ASC is the default, so this also works:
+
+SELECT *
+FROM students
+ORDER BY marks;
+Descending Order
+SELECT *
+FROM students
+ORDER BY marks DESC;
+
+Highest marks → lowest marks.
+
+Example
+SELECT name, marks
+FROM students
+ORDER BY marks DESC;
+
+Result:
+
+name	marks
+Amit	91
+Rahul	85
+Rohit	78
+Priya	72
+Sneha	65
+
+11. LIMIT
+
+LIMIT controls how many records are returned.
+
+Get first 3 students
+SELECT *
+FROM students
+LIMIT 3;
+Top 2 students by marks
+
+Combine ORDER BY and LIMIT:
+
+SELECT name, marks
+FROM students
+ORDER BY marks DESC
+LIMIT 2;
+
+Result:
+
+name	marks
+Amit	91
+Rahul	85
+
+This is a very useful pattern:
+
+ORDER BY marks DESC
+LIMIT 2;
+
+Meaning:
+
+Sort by highest marks and return only 2 records.
+
+12. DISTINCT
+
+DISTINCT removes duplicate values from the result.
+
+Find all unique cities
+SELECT DISTINCT city
+FROM students;
+
+Result:
+
+Pune
+Mumbai
+Nashik
+
+Although multiple students may belong to the same city, each city appears only once.
+
+Unique courses
+SELECT DISTINCT course
+FROM students;
+
+Result:
+
+BSc CS
+BCA
