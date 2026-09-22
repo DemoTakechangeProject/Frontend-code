@@ -1,0 +1,285 @@
+mysql> use college;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| student           |
+| teacher           |
++-------------------+
+2 rows in set (0.01 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 407 | Mr.Jadhav   |   49 |  44000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
++------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select *from student where sname like 'A%';
++------+--------+--------+
+| roll | sname  | city   |
++------+--------+--------+
+|  101 | Ankita | Nashik |
++------+--------+--------+
+1 row in set (0.00 sec)
+
+mysql> select *from teacher where tname like '%e';
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select *from teacher where tname like '%sh%';
++-----+------------+------+--------+
+| tid | tname      | age  | salary |
++-----+------------+------+--------+
+| 401 | Mr.Sharama |   56 |  60000 |
+| 406 | Mr.Kushare |   37 |  80000 |
++-----+------------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select *from teacher where tname like '_sh%';
+Empty set (0.00 sec)
+
+mysql> select *from student where sname like '_ayatri';
++------+---------+------+
+| roll | sname   | city |
++------+---------+------+
+|  102 | Gayatri | Pune |
++------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> select *from student where sname like '__ayatri';
+Empty set (0.00 sec)
+
+mysql> select *from teacher where tname like '___sh%';
++-----+------------+------+--------+
+| tid | tname      | age  | salary |
++-----+------------+------+--------+
+| 401 | Mr.Sharama |   56 |  60000 |
++-----+------------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 407 | Mr.Jadhav   |   49 |  44000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select *from teacher where age between 40 AND 60;
++-----+------------+------+--------+
+| tid | tname      | age  | salary |
++-----+------------+------+--------+
+| 401 | Mr.Sharama |   56 |  60000 |
+| 402 | Mr.Jadhav  |   40 |  80000 |
+| 403 | Mr.Aher    |   48 |  90000 |
+| 405 | Mr.Gite    |   60 |  40000 |
+| 407 | Mr.Jadhav  |   49 |  44000 |
++-----+------------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select tname from teacher where age between 40 AND 50;
++-----------+
+| tname     |
++-----------+
+| Mr.Jadhav |
+| Mr.Aher   |
+| Mr.Jadhav |
++-----------+
+3 rows in set (0.00 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
++------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select sname from student where city='Nashik' or city='Pune';
++---------+
+| sname   |
++---------+
+| Ankita  |
+| Gayatri |
++---------+
+2 rows in set (0.00 sec)
+
+mysql> select *from student where city in('Nashik','Pune');
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
++------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 407 | Mr.Jadhav   |   49 |  44000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select tname from teacher where salary in(80000,40000,20000);
++-------------+
+| tname       |
++-------------+
+| Mr.Jadhav   |
+| Mr.Sonawane |
+| Mr.Gite     |
+| Mr.Kushare  |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select tname,salary from teacher where salary in(80000,40000,20000);
++-------------+--------+
+| tname       | salary |
++-------------+--------+
+| Mr.Jadhav   |  80000 |
+| Mr.Sonawane |  20000 |
+| Mr.Gite     |  40000 |
+| Mr.Kushare  |  80000 |
++-------------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
+
+mysql> select count(*) from teacher;
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select count(*) as total_teacher from teacher;
++---------------+
+| total_teacher |
++---------------+
+|             8 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 407 | Mr.Jadhav   |   49 |  44000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select tname,salary where salary between 50000 AND 80000;
+ERROR 1054 (42S22): Unknown column 'tname' in 'field list'
+mysql> select tname,salary from teacher where salary between 50000 AND 80000;
++------------+--------+
+| tname      | salary |
++------------+--------+
+| Mr.Sharama |  60000 |
+| Mr.Jadhav  |  80000 |
+| Mr.Kushare |  80000 |
++------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select tname,salary as S from teacher where S between 50000 AND 80000;
+ERROR 1054 (42S22): Unknown column 'S' in 'where clause'
+mysql> select *from student where city as C='Nashik' or C='Pune';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as C='Nashik' or C='Pune'' at line 1
+mysql> select sname as student_name from student as S where city='Nashik' or city='Pune';
++--------------+
+| student_name |
++--------------+
+| Ankita       |
+| Gayatri      |
++--------------+
+2 rows in set (0.00 sec)
+
+mysql> select sname as student_name from student as S where city='Nashik' or city='Pune';
++--------------+
+| student_name |
++--------------+
+| Ankita       |
+| Gayatri      |
++--------------+
+2 rows in set (0.00 sec)
+
+mysql> select student_name from student as S where city='Nashik' or city='Pune';
+ERROR 1054 (42S22): Unknown column 'student_name' in 'field list'
+mysql> select sname from student as S where city='Nashik' or city='Pune';
++---------+
+| sname   |
++---------+
+| Ankita  |
+| Gayatri |
++---------+
+2 rows in set (0.00 sec)
+
+mysql> select sname as student_name from student as S where city='Nashik' or city='Pune';
++--------------+
+| student_name |
++--------------+
+| Ankita       |
+| Gayatri      |
++--------------+
+2 rows in set (0.00 sec)
+
+mysql> select sname as student_name from student where city='Nashik' or city='Pune';
++--------------+
+| student_name |
++--------------+
+| Ankita       |
+| Gayatri      |
++--------------+
+2 rows in set (0.00 sec)
+
+mysql>

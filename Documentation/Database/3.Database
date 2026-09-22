@@ -40,6 +40,8 @@ Age between 19 and 21
 SELECT *
 FROM students
 WHERE age BETWEEN 19 AND 21;
+
+
 15. IN
 
 IN is used when you want to check against multiple possible values.
