@@ -1,0 +1,193 @@
+mysql> use college;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| student           |
+| teacher           |
++-------------------+
+2 rows in set (0.01 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | NO   | PRI | NULL    |       |
+| sname | varchar(30) | YES  |     | NULL    |       |
+| city  | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc teacher;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| tid    | int         | NO   | PRI | NULL    |       |
+| tname  | varchar(30) | YES  |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
++------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 407 | Mr.Jadhav   |   49 |  44000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select sum(age) as total_age from teacher;
++-----------+
+| total_age |
++-----------+
+|       428 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(age) from teacher;
++----------+
+| sum(age) |
++----------+
+|      428 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select avg(age) from teacher;
++----------+
+| avg(age) |
++----------+
+|  53.5000 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary) from teacher;
++-------------+
+| avg(salary) |
++-------------+
+|  57000.0000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 407 | Mr.Jadhav   |   49 |  44000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select min(age) as min_age from teacher;
++---------+
+| min_age |
++---------+
+|      37 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select max(salary) from teacher;
++-------------+
+| max(salary) |
++-------------+
+|       90000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select min(salary) from teacher;
++-------------+
+| min(salary) |
++-------------+
+|       20000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
++------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select *from teacher;
++-----+-------------+------+--------+
+| tid | tname       | age  | salary |
++-----+-------------+------+--------+
+| 401 | Mr.Sharama  |   56 |  60000 |
+| 402 | Mr.Jadhav   |   40 |  80000 |
+| 403 | Mr.Aher     |   48 |  90000 |
+| 404 | Mr.Sonawane |   70 |  20000 |
+| 405 | Mr.Gite     |   60 |  40000 |
+| 406 | Mr.Kushare  |   37 |  80000 |
+| 407 | Mr.Jadhav   |   49 |  44000 |
+| 408 | Mr.Gite     |   68 |  42000 |
++-----+-------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student;
++------+---------+--------+
+| roll | sname   | city   |
++------+---------+--------+
+|  101 | Ankita  | Nashik |
+|  102 | Gayatri | Pune   |
+|  103 | Yogesh  | Mumbai |
+|  104 | Joy     | Nashik |
+|  105 | Pooja   | Pune   |
+|  106 | Ganesh  | Mumbai |
+|  107 | Pankaj  | Nashik |
+|  108 | Aditya  | Nashik |
+|  109 | Sushant | Mumbai |
+|  110 | Kiran   | Pune   |
++------+---------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select city,count(*) from student group by city;
++--------+----------+
+| city   | count(*) |
++--------+----------+
+| Nashik |        4 |
+| Pune   |        3 |
+| Mumbai |        3 |
++--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select city,sname from student group by city;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'college.student.sname' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select city,sum(roll) from student group by city;
++--------+-----------+
+| city   | sum(roll) |
++--------+-----------+
+| Nashik |       420 |
+| Pune   |       317 |
+| Mumbai |       318 |
++--------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
