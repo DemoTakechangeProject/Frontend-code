@@ -1,0 +1,13 @@
+SELECT roll, sname, marks, course_id
+FROM college.student_table;
+
+insert into college.student_table values(306,'Pooja',45,204),(307,'Sakshi',25,205);
+
+insert into college.courses values(206,'Civil'),(207,'Mechancal'),(208,'Electrical');
+
+create table student_info(roll int primary key,sname varchar(30),marks int,course_id int);
+
+select c.course_id,s.sname,c.course_name
+from student_info s
+inner join courses c 
+on s.course_id = c.course_id;
