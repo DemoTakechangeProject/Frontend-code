@@ -1,0 +1,377 @@
+mysql> use college;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| courses           |
+| student           |
+| student_info      |
+| student_table     |
+| teacher           |
++-------------------+
+5 rows in set (0.01 sec)
+
+mysql> select *from student_info;
++------+------------+-------+-----------+
+| roll | sname      | marks | course_id |
++------+------------+-------+-----------+
+|  301 | Ankita     |    80 |       202 |
+|  302 | Rajeshwari |    90 |       305 |
+|  303 | Yogesh     |    85 |       204 |
+|  304 | Gayatri    |    50 |       301 |
+|  305 | Ganesh     |    60 |       303 |
+|  306 | Pooja      |    45 |       204 |
+|  307 | Sakshi     |    25 |       205 |
+|  308 | Tanuja     |    80 |       202 |
++------+------------+-------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> select *fro courses;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fro courses' at line 1
+mysql> select *fro course;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fro course' at line 1
+mysql> select *fro cousrse;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fro cousrse' at line 1
+mysql> select *fro cousrses;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fro cousrses' at line 1
+mysql> select *from courses;
++-----------+-------------+
+| course_id | course_name |
++-----------+-------------+
+|       201 | BCS         |
+|       202 | CS          |
+|       203 | E&TC        |
+|       204 | BCA         |
+|       205 | AI          |
+|       206 | Civil       |
+|       207 | Mechancal   |
+|       208 | Electrical  |
++-----------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student_info;
++------+------------+-------+-----------+
+| roll | sname      | marks | course_id |
++------+------------+-------+-----------+
+|  301 | Ankita     |    80 |       202 |
+|  302 | Rajeshwari |    90 |       305 |
+|  303 | Yogesh     |    85 |       204 |
+|  304 | Gayatri    |    50 |       301 |
+|  305 | Ganesh     |    60 |       303 |
+|  306 | Pooja      |    45 |       204 |
+|  307 | Sakshi     |    25 |       205 |
+|  308 | Tanuja     |    80 |       202 |
++------+------------+-------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> select c.course.id,s.sname,c.course_name from student_info s right join courses c on s.course_id = c.course_id;
+ERROR 1054 (42S22): Unknown column 'c.course.id' in 'field list'
+mysql> select c.course_id,s.sname,c.course_name from student_info s right join courses c on s.course_id = c.course_id;
++-----------+--------+-------------+
+| course_id | sname  | course_name |
++-----------+--------+-------------+
+|       201 | NULL   | BCS         |
+|       202 | Tanuja | CS          |
+|       202 | Ankita | CS          |
+|       203 | NULL   | E&TC        |
+|       204 | Pooja  | BCA         |
+|       204 | Yogesh | BCA         |
+|       205 | Sakshi | AI          |
+|       206 | NULL   | Civil       |
+|       207 | NULL   | Mechancal   |
+|       208 | NULL   | Electrical  |
++-----------+--------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select c.course_id,s.sname,c.course_name from student_info s left join courses c on s.course_id = c.course_id;
++-----------+------------+-------------+
+| course_id | sname      | course_name |
++-----------+------------+-------------+
+|       202 | Ankita     | CS          |
+|      NULL | Rajeshwari | NULL        |
+|       204 | Yogesh     | BCA         |
+|      NULL | Gayatri    | NULL        |
+|      NULL | Ganesh     | NULL        |
+|       204 | Pooja      | BCA         |
+|       205 | Sakshi     | AI          |
+|       202 | Tanuja     | CS          |
++-----------+------------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> select c.course_id,s.sname,c.course_name from student_info cross join courses c;
+ERROR 1054 (42S22): Unknown column 's.sname' in 'field list'
+mysql> select c.course_id,s.sname,c.course_name from student_info s cross join courses c;
++-----------+------------+-------------+
+| course_id | sname      | course_name |
++-----------+------------+-------------+
+|       201 | Tanuja     | BCS         |
+|       201 | Sakshi     | BCS         |
+|       201 | Pooja      | BCS         |
+|       201 | Ganesh     | BCS         |
+|       201 | Gayatri    | BCS         |
+|       201 | Yogesh     | BCS         |
+|       201 | Rajeshwari | BCS         |
+|       201 | Ankita     | BCS         |
+|       202 | Tanuja     | CS          |
+|       202 | Sakshi     | CS          |
+|       202 | Pooja      | CS          |
+|       202 | Ganesh     | CS          |
+|       202 | Gayatri    | CS          |
+|       202 | Yogesh     | CS          |
+|       202 | Rajeshwari | CS          |
+|       202 | Ankita     | CS          |
+|       203 | Tanuja     | E&TC        |
+|       203 | Sakshi     | E&TC        |
+|       203 | Pooja      | E&TC        |
+|       203 | Ganesh     | E&TC        |
+|       203 | Gayatri    | E&TC        |
+|       203 | Yogesh     | E&TC        |
+|       203 | Rajeshwari | E&TC        |
+|       203 | Ankita     | E&TC        |
+|       204 | Tanuja     | BCA         |
+|       204 | Sakshi     | BCA         |
+|       204 | Pooja      | BCA         |
+|       204 | Ganesh     | BCA         |
+|       204 | Gayatri    | BCA         |
+|       204 | Yogesh     | BCA         |
+|       204 | Rajeshwari | BCA         |
+|       204 | Ankita     | BCA         |
+|       205 | Tanuja     | AI          |
+|       205 | Sakshi     | AI          |
+|       205 | Pooja      | AI          |
+|       205 | Ganesh     | AI          |
+|       205 | Gayatri    | AI          |
+|       205 | Yogesh     | AI          |
+|       205 | Rajeshwari | AI          |
+|       205 | Ankita     | AI          |
+|       206 | Tanuja     | Civil       |
+|       206 | Sakshi     | Civil       |
+|       206 | Pooja      | Civil       |
+|       206 | Ganesh     | Civil       |
+|       206 | Gayatri    | Civil       |
+|       206 | Yogesh     | Civil       |
+|       206 | Rajeshwari | Civil       |
+|       206 | Ankita     | Civil       |
+|       207 | Tanuja     | Mechancal   |
+|       207 | Sakshi     | Mechancal   |
+|       207 | Pooja      | Mechancal   |
+|       207 | Ganesh     | Mechancal   |
+|       207 | Gayatri    | Mechancal   |
+|       207 | Yogesh     | Mechancal   |
+|       207 | Rajeshwari | Mechancal   |
+|       207 | Ankita     | Mechancal   |
+|       208 | Tanuja     | Electrical  |
+|       208 | Sakshi     | Electrical  |
+|       208 | Pooja      | Electrical  |
+|       208 | Ganesh     | Electrical  |
+|       208 | Gayatri    | Electrical  |
+|       208 | Yogesh     | Electrical  |
+|       208 | Rajeshwari | Electrical  |
+|       208 | Ankita     | Electrical  |
++-----------+------------+-------------+
+64 rows in set (0.00 sec)
+
+mysql> select *from courses;
++-----------+-------------+
+| course_id | course_name |
++-----------+-------------+
+|       201 | BCS         |
+|       202 | CS          |
+|       203 | E&TC        |
+|       204 | BCA         |
+|       205 | AI          |
+|       206 | Civil       |
+|       207 | Mechancal   |
+|       208 | Electrical  |
++-----------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student_info;
++------+------------+-------+-----------+
+| roll | sname      | marks | course_id |
++------+------------+-------+-----------+
+|  301 | Ankita     |    80 |       202 |
+|  302 | Rajeshwari |    90 |       305 |
+|  303 | Yogesh     |    85 |       204 |
+|  304 | Gayatri    |    50 |       301 |
+|  305 | Ganesh     |    60 |       303 |
+|  306 | Pooja      |    45 |       204 |
+|  307 | Sakshi     |    25 |       205 |
+|  308 | Tanuja     |    80 |       202 |
++------+------------+-------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student_info s cross join courses c;
++------+------------+-------+-----------+-----------+-------------+
+| roll | sname      | marks | course_id | course_id | course_name |
++------+------------+-------+-----------+-----------+-------------+
+|  308 | Tanuja     |    80 |       202 |       201 | BCS         |
+|  307 | Sakshi     |    25 |       205 |       201 | BCS         |
+|  306 | Pooja      |    45 |       204 |       201 | BCS         |
+|  305 | Ganesh     |    60 |       303 |       201 | BCS         |
+|  304 | Gayatri    |    50 |       301 |       201 | BCS         |
+|  303 | Yogesh     |    85 |       204 |       201 | BCS         |
+|  302 | Rajeshwari |    90 |       305 |       201 | BCS         |
+|  301 | Ankita     |    80 |       202 |       201 | BCS         |
+|  308 | Tanuja     |    80 |       202 |       202 | CS          |
+|  307 | Sakshi     |    25 |       205 |       202 | CS          |
+|  306 | Pooja      |    45 |       204 |       202 | CS          |
+|  305 | Ganesh     |    60 |       303 |       202 | CS          |
+|  304 | Gayatri    |    50 |       301 |       202 | CS          |
+|  303 | Yogesh     |    85 |       204 |       202 | CS          |
+|  302 | Rajeshwari |    90 |       305 |       202 | CS          |
+|  301 | Ankita     |    80 |       202 |       202 | CS          |
+|  308 | Tanuja     |    80 |       202 |       203 | E&TC        |
+|  307 | Sakshi     |    25 |       205 |       203 | E&TC        |
+|  306 | Pooja      |    45 |       204 |       203 | E&TC        |
+|  305 | Ganesh     |    60 |       303 |       203 | E&TC        |
+|  304 | Gayatri    |    50 |       301 |       203 | E&TC        |
+|  303 | Yogesh     |    85 |       204 |       203 | E&TC        |
+|  302 | Rajeshwari |    90 |       305 |       203 | E&TC        |
+|  301 | Ankita     |    80 |       202 |       203 | E&TC        |
+|  308 | Tanuja     |    80 |       202 |       204 | BCA         |
+|  307 | Sakshi     |    25 |       205 |       204 | BCA         |
+|  306 | Pooja      |    45 |       204 |       204 | BCA         |
+|  305 | Ganesh     |    60 |       303 |       204 | BCA         |
+|  304 | Gayatri    |    50 |       301 |       204 | BCA         |
+|  303 | Yogesh     |    85 |       204 |       204 | BCA         |
+|  302 | Rajeshwari |    90 |       305 |       204 | BCA         |
+|  301 | Ankita     |    80 |       202 |       204 | BCA         |
+|  308 | Tanuja     |    80 |       202 |       205 | AI          |
+|  307 | Sakshi     |    25 |       205 |       205 | AI          |
+|  306 | Pooja      |    45 |       204 |       205 | AI          |
+|  305 | Ganesh     |    60 |       303 |       205 | AI          |
+|  304 | Gayatri    |    50 |       301 |       205 | AI          |
+|  303 | Yogesh     |    85 |       204 |       205 | AI          |
+|  302 | Rajeshwari |    90 |       305 |       205 | AI          |
+|  301 | Ankita     |    80 |       202 |       205 | AI          |
+|  308 | Tanuja     |    80 |       202 |       206 | Civil       |
+|  307 | Sakshi     |    25 |       205 |       206 | Civil       |
+|  306 | Pooja      |    45 |       204 |       206 | Civil       |
+|  305 | Ganesh     |    60 |       303 |       206 | Civil       |
+|  304 | Gayatri    |    50 |       301 |       206 | Civil       |
+|  303 | Yogesh     |    85 |       204 |       206 | Civil       |
+|  302 | Rajeshwari |    90 |       305 |       206 | Civil       |
+|  301 | Ankita     |    80 |       202 |       206 | Civil       |
+|  308 | Tanuja     |    80 |       202 |       207 | Mechancal   |
+|  307 | Sakshi     |    25 |       205 |       207 | Mechancal   |
+|  306 | Pooja      |    45 |       204 |       207 | Mechancal   |
+|  305 | Ganesh     |    60 |       303 |       207 | Mechancal   |
+|  304 | Gayatri    |    50 |       301 |       207 | Mechancal   |
+|  303 | Yogesh     |    85 |       204 |       207 | Mechancal   |
+|  302 | Rajeshwari |    90 |       305 |       207 | Mechancal   |
+|  301 | Ankita     |    80 |       202 |       207 | Mechancal   |
+|  308 | Tanuja     |    80 |       202 |       208 | Electrical  |
+|  307 | Sakshi     |    25 |       205 |       208 | Electrical  |
+|  306 | Pooja      |    45 |       204 |       208 | Electrical  |
+|  305 | Ganesh     |    60 |       303 |       208 | Electrical  |
+|  304 | Gayatri    |    50 |       301 |       208 | Electrical  |
+|  303 | Yogesh     |    85 |       204 |       208 | Electrical  |
+|  302 | Rajeshwari |    90 |       305 |       208 | Electrical  |
+|  301 | Ankita     |    80 |       202 |       208 | Electrical  |
++------+------------+-------+-----------+-----------+-------------+
+64 rows in set (0.00 sec)
+
+mysql> select c.course_id,s.sname,c.course_name from courses c cross join student_info s;
++-----------+------------+-------------+
+| course_id | sname      | course_name |
++-----------+------------+-------------+
+|       208 | Ankita     | Electrical  |
+|       207 | Ankita     | Mechancal   |
+|       206 | Ankita     | Civil       |
+|       205 | Ankita     | AI          |
+|       204 | Ankita     | BCA         |
+|       203 | Ankita     | E&TC        |
+|       202 | Ankita     | CS          |
+|       201 | Ankita     | BCS         |
+|       208 | Rajeshwari | Electrical  |
+|       207 | Rajeshwari | Mechancal   |
+|       206 | Rajeshwari | Civil       |
+|       205 | Rajeshwari | AI          |
+|       204 | Rajeshwari | BCA         |
+|       203 | Rajeshwari | E&TC        |
+|       202 | Rajeshwari | CS          |
+|       201 | Rajeshwari | BCS         |
+|       208 | Yogesh     | Electrical  |
+|       207 | Yogesh     | Mechancal   |
+|       206 | Yogesh     | Civil       |
+|       205 | Yogesh     | AI          |
+|       204 | Yogesh     | BCA         |
+|       203 | Yogesh     | E&TC        |
+|       202 | Yogesh     | CS          |
+|       201 | Yogesh     | BCS         |
+|       208 | Gayatri    | Electrical  |
+|       207 | Gayatri    | Mechancal   |
+|       206 | Gayatri    | Civil       |
+|       205 | Gayatri    | AI          |
+|       204 | Gayatri    | BCA         |
+|       203 | Gayatri    | E&TC        |
+|       202 | Gayatri    | CS          |
+|       201 | Gayatri    | BCS         |
+|       208 | Ganesh     | Electrical  |
+|       207 | Ganesh     | Mechancal   |
+|       206 | Ganesh     | Civil       |
+|       205 | Ganesh     | AI          |
+|       204 | Ganesh     | BCA         |
+|       203 | Ganesh     | E&TC        |
+|       202 | Ganesh     | CS          |
+|       201 | Ganesh     | BCS         |
+|       208 | Pooja      | Electrical  |
+|       207 | Pooja      | Mechancal   |
+|       206 | Pooja      | Civil       |
+|       205 | Pooja      | AI          |
+|       204 | Pooja      | BCA         |
+|       203 | Pooja      | E&TC        |
+|       202 | Pooja      | CS          |
+|       201 | Pooja      | BCS         |
+|       208 | Sakshi     | Electrical  |
+|       207 | Sakshi     | Mechancal   |
+|       206 | Sakshi     | Civil       |
+|       205 | Sakshi     | AI          |
+|       204 | Sakshi     | BCA         |
+|       203 | Sakshi     | E&TC        |
+|       202 | Sakshi     | CS          |
+|       201 | Sakshi     | BCS         |
+|       208 | Tanuja     | Electrical  |
+|       207 | Tanuja     | Mechancal   |
+|       206 | Tanuja     | Civil       |
+|       205 | Tanuja     | AI          |
+|       204 | Tanuja     | BCA         |
+|       203 | Tanuja     | E&TC        |
+|       202 | Tanuja     | CS          |
+|       201 | Tanuja     | BCS         |
++-----------+------------+-------------+
+64 rows in set (0.00 sec)
+
+mysql> select *from student_info;
++------+------------+-------+-----------+
+| roll | sname      | marks | course_id |
++------+------------+-------+-----------+
+|  301 | Ankita     |    80 |       202 |
+|  302 | Rajeshwari |    90 |       305 |
+|  303 | Yogesh     |    85 |       204 |
+|  304 | Gayatri    |    50 |       301 |
+|  305 | Ganesh     |    60 |       303 |
+|  306 | Pooja      |    45 |       204 |
+|  307 | Sakshi     |    25 |       205 |
+|  308 | Tanuja     |    80 |       202 |
++------+------------+-------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> select *from courses;
++-----------+-------------+
+| course_id | course_name |
++-----------+-------------+
+|       201 | BCS         |
+|       202 | CS          |
+|       203 | E&TC        |
+|       204 | BCA         |
+|       205 | AI          |
+|       206 | Civil       |
+|       207 | Mechancal   |
+|       208 | Electrical  |
++-----------+-------------+
+8 rows in set (0.00 sec)
+
+mysql>
