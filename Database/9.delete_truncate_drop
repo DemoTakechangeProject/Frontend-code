@@ -1,0 +1,16 @@
+create table books(bid int,bname varchar(30));
+
+desc books;
+
+insert into books values(101,'Java prog'),(102,'C prog'),(103,'Math');
+
+select *from books;
+
+drop table books;
+
+truncate table books;
+
+delete from books where bid>=102;
+
+
+

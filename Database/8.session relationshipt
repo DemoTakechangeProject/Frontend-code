@@ -1,0 +1,42 @@
+SELECT sid, sname
+FROM college.subject;
+
+create table student_subject(
+roll int,sid int,
+primary key(roll,sid),
+foreign key(roll) references college.student(roll),
+foreign key(sid) references college.subject(sid)
+);
+
+desc student_subject;
+
+insert into student_subject values(101,301),(101,302),(101,303),(102,301),(102,302),(102,303);
+insert into student_subject values(108,301),(107,302),(106,304),(103,305),(104,305),(110,304);
+
+select *from student_subject;
+
+-- 101-110 student
+-- 301-308
+
+SELECT roll, sid
+FROM college.student_subject;
+
+roll sname sid sub name
+
+select st.roll,st.sname as student_name,sb.sid,sb.sname as subject_name
+from student st
+inner join student_subject ss
+on st.roll = ss.roll
+inner join subject sb
+on sb.sid = ss.sid;
+
+-- using where
+
+select st.roll,st.sname as student_name,sb.sid,sb.sname as subject_name
+from student st
+inner join student_subject ss
+on st.roll = ss.roll
+inner join subject sb
+on sb.sid = ss.sid
+where sb.sname = 'Java' and sb.sname='Dot net';
+
