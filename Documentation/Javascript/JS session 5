@@ -1,0 +1,83 @@
+5. Array Methods
+Array methods are very important in modern JavaScript and especially important when learning React JS.
+Consider:
+const numbers = [10, 20, 30, 40, 50];
+
+forEach()
+Used to execute a function for every element.
+numbers.forEach(number => {
+    console.log(number);
+});
+Output:
+10
+20
+30
+40
+50
+
+map()
+Used to create a new array by transforming each element.
+const numbers = [10, 20, 30];
+
+const result = numbers.map(number => number * 2);
+
+console.log(result);
+Output:
+[20, 40, 60]
+Example
+const names = ["rahul", "priya", "amit"];
+
+const upperNames = names.map(name => name.toUpperCase());
+
+console.log(upperNames);
+Output:
+["RAHUL", "PRIYA", "AMIT"]
+
+filter()
+Used to select elements based on a condition.
+const numbers = [10, 15, 20, 25, 30];
+
+const result = numbers.filter(number => number > 20);
+
+console.log(result);
+Output:
+[25, 30]
+
+find()
+Returns the first element that matches the condition.
+const numbers = [10, 20, 30, 40];
+
+const result = numbers.find(number => number > 20);
+
+console.log(result);
+Output:
+30
+
+some()
+Checks whether at least one element satisfies the condition.
+const numbers = [10, 20, 30];
+
+const result = numbers.some(number => number > 25);
+
+console.log(result);
+Output:
+true
+
+every()
+Checks whether all elements satisfy the condition.
+const numbers = [10, 20, 30];
+
+const result = numbers.every(number => number > 5);
+
+console.log(result);
+Output:
+true
+
+includes()
+Checks whether an array contains a particular value.
+const fruits = ["Apple", "Mango", "Banana"];
+
+console.log(fruits.includes("Mango"));
+Output:
+true
+
