@@ -1,0 +1,143 @@
+6. DOM
+DOM = Document Object Model
+The DOM allows JavaScript to access and change HTML elements.
+Consider this HTML:
+<h1 id="title">Hello World</h1>
+
+<button id="btn">Change Text</button>
+JavaScript can access the <h1>:
+const title = document.getElementById("title");
+
+console.log(title);
+
+getElementById()
+const title = document.getElementById("title");
+
+title.textContent = "Welcome to JavaScript";
+The HTML changes from:
+Hello World
+to:
+Welcome to JavaScript
+
+querySelector()
+const title = document.querySelector("#title");
+You can also select a class:
+const card = document.querySelector(".card");
+
+querySelectorAll()
+Selects multiple elements.
+HTML:
+<p class="text">Hello</p>
+<p class="text">Welcome</p>
+<p class="text">JavaScript</p>
+JavaScript:
+const paragraphs = document.querySelectorAll(".text");
+
+console.log(paragraphs);
+
+Changing CSS
+HTML:
+<h1 id="title">Hello</h1>
+JavaScript:
+const title = document.getElementById("title");
+
+title.style.color = "blue";
+title.style.fontSize = "40px";
+
+Changing HTML
+const box = document.getElementById("box");
+
+box.innerHTML = "<h2>Welcome</h2>";
+textContent vs innerHTML
+element.textContent
+Changes text.
+element.innerHTML
+Can insert HTML.
+
+7. Events
+Events are actions performed by the user or browser.
+Examples:
+Click
+Mouse movement
+Keyboard input
+Form submission
+Page loading
+
+click Event
+HTML:
+<button id="btn">Click Me</button>
+JavaScript:
+const button = document.getElementById("btn");
+
+button.addEventListener("click", function() {
+    alert("Button clicked!");
+});
+
+Using Arrow Function
+button.addEventListener("click", () => {
+    alert("Button clicked!");
+});
+
+Example: Change Text on Button Click
+HTML
+<h1 id="title">Hello World</h1>
+
+<button id="btn">Change Text</button>
+JavaScript
+const title = document.getElementById("title");
+const button = document.getElementById("btn");
+
+button.addEventListener("click", () => {
+
+    title.textContent = "Welcome to TechSolutions";
+
+});
+
+Example: Change Background Color
+HTML
+<div id="box">
+    Hello
+</div>
+
+<button id="btn">
+    Change Color
+</button>
+JavaScript
+const box = document.getElementById("box");
+const button = document.getElementById("btn");
+
+button.addEventListener("click", () => {
+
+    box.style.backgroundColor = "blue";
+    box.style.color = "white";
+
+});
+
+Example: Form Event
+HTML
+<form id="myForm">
+
+    <input
+        type="text"
+        id="name"
+        placeholder="Enter Name"
+    >
+
+    <button type="submit">
+        Submit
+    </button>
+
+</form>
+JavaScript
+const form = document.getElementById("myForm");
+
+form.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+
+    console.log(`Welcome ${name}`);
+
+});
+event.preventDefault() prevents the browser's default form submission.
