@@ -1,0 +1,233 @@
+JavaScript Fetch API — GET, POST, PUT, PATCH, DELETE
+Since you are learning JavaScript API calls and displaying Fake Store API products as cards, let's understand all the important HTTP methods with simple examples and real-world scenarios.
+1. What is the Fetch API?
+The fetch() method is used to send HTTP requests from JavaScript to a server or API.
+For example, when you open an e-commerce website:
+- GET — Display products.
+- POST — Add a new product.
+- PUT — Replace an existing product's details.
+- PATCH — Update only selected product details.
+- DELETE — Delete a product.
+
+The general syntax is:
+fetch(url, {
+    method: "GET"
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+})
+
+fetch() sends the request.
+response.json() reads the response body and parses JSON.
+.then() handles the result of a successful promise.
+
+GET
+
+Read / Retrieve data
+Example: Display all products on a webpage.
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+
+
+
+
+POST
+
+Create data
+Example: Add a new product to the store.
+fetch("https://fakestoreapi.com/products", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    title: "New T-Shirt",
+    price: 499,
+    description: "Cotton T-Shirt",
+    image: "https://i.pravatar.cc",
+    category: "clothing"
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
+
+
+
+
+PUT
+
+Replace / Update a resource
+Example: Replace the details of product with ID 1.
+fetch("https://fakestoreapi.com/products/1", {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    title: "Updated Laptop",
+    price: 55000,
+    description: "Updated description",
+    image: "https://i.pravatar.cc",
+    category: "electronics"
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
+
+
+
+
+PATCH
+
+Update selected fields
+Example: Change only the price of product with ID 1.
+fetch("https://fakestoreapi.com/products/1", {
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    price: 799
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
+
+
+
+
+DELETE
+
+Delete a resource
+Example: Delete product with ID 1.
+fetch("https://fakestoreapi.com/products/1", {
+  method: "DELETE"
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
+Property	Explanation
+method	Specifies GET, POST, PUT, PATCH, or DELETE.
+headers	Provides information about the request, such as the data format.
+Content-Type	Tells the server that the request body contains JSON.
+body	Contains the data being sent to the server.
+JSON.stringify()	Converts a JavaScript object into a JSON string.
+
+
+In JavaScript, you can convert a JavaScript object into a JSON string using JSON.stringify().
+1. JavaScript Object to JSON
+const product = {
+    title: "New T-Shirt",
+    price: 499,
+    category: "clothing"
+};
+
+const jsonData = JSON.stringify(product);
+
+console.log(jsonData);
+console.log(typeof jsonData);
+
+
+Output:
+{"title":"New T-Shirt","price":499,"category":"clothing"}
+
+
+string
+
+
+2. Pretty-print JSON
+To display JSON in a readable format, use the third parameter 2.
+const jsonData = JSON.stringify(product, null, 2);
+
+console.log(jsonData);
+
+
+Output:
+{
+  "title": "New T-Shirt",
+  "price": 499,
+  "category": "clothing"
+}
+
+
+3. JSON String to JavaScript Object
+To convert JSON back into a JavaScript object, use JSON.parse().
+const jsonString = '{"title":"New T-Shirt","price":499}';
+
+const obj = JSON.parse(jsonString);
+
+console.log(obj.title); // New T-Shirt
+console.log(obj.price); // 499
+console.log(typeof obj); // object
+
+
+4. Difference between stringify() and parse()
+Method	Conversion	Example
+JSON.stringify()	Object → JSON string	Used when sending data to an API
+JSON.parse()	JSON string → Object	Used when converting JSON text into an object
+
+The JavaScript fetch() method accepts a URL and an optional options object containing parameters such as method, headers, body and more
+
+1. Complete Fetch API syntax
+fetch(url, {
+    method: "GET",
+    headers: {},
+    body: null,
+    mode: "cors",
+    credentials: "same-origin",
+    cache: "default",
+    redirect: "follow",
+    referrer: "about:client",
+    referrerPolicy: "strict-origin-when-cross-origin",
+    integrity: "",
+    signal: undefined,
+    keepalive: false
+})
+.then(response => {
+    return response.json();
+})
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error(error);
+});
+
+
+These are the main options, but you generally don't need to specify all of them for every request. Some are browser defaults, and some have restrictions depending on the request.
+2. All Fetch parameters explained
+1. method
+Specifies the HTTP method.
+method: "GET"
+// GET, POST, PUT, PATCH, DELETE
+
+
+
+
+
+2. headers
+Sends metadata about the request, such as content type and authorization.
+headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_TOKEN"
+}
+
+
+
+
+
+3. body
+Contains the data sent to the server. Commonly used with POST, PUT and PATCH.
+body: JSON.stringify({
+    title: "Mobile",
+    price: 15000
+})
+
+
+For GET requests, a body is generally not allowed.
